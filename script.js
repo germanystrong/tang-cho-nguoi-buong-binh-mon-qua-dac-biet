@@ -34,7 +34,7 @@ const S=[
  {say:'mà hiếm khi có ai nói lời cảm ơn', bars:1.8, mood:'shy'},
  {scene:'none', mode:'hero', say:'nên hôm nay, đến lượt <em>cậu</em> được quan tâm', bars:2, mood:'happy', fx:{petals:1.1}},
 
- {say:'y:'Dmanh xin gửi Ngănn bốn lời chúc ', bars:1.5, mood:'wave', bg:2},
+ {say:'Dmanh xin gửi Ngănn bốn lời chúc ', bars:1.5, mood:'wave', bg:2},
  {scene:'health', mode:'side', say:'chúc cậu thật nhiều <em>sức khỏe</em> — để còn đi hết những nơi cậu muốn đến', bars:2.4, mood:'talk', bg:1, fx:{meteor:.6}},
  {scene:'peace', say:'chúc cậu <em>bình yên</em> — nơi có nụ cười, hoa, và cả những lời yêu thương ngọt ngào nhất!', bars:2.2, mood:'talk', bg:1},
  {scene:'free', say:'chúc cậu thật nhiều <em>sức khỏe</em> — để còn thưởng thức những tinh hoa cuộc đời', bars:2.5, mood:'talk', bg:0, fx:{lantern:1,meteor:.8}},

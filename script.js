@@ -31,14 +31,13 @@ const S=[
  {say:'', bars:1.15, reveal:['c2']},
  {say:'', bars:1.15, reveal:['c3']},
  {say:'', bars:1.4, reveal:['c4']},
- {say:'', bars:1.8, reveal:['c5']},
  {say:'mà hiếm khi có ai nói lời cảm ơn', bars:1.8, mood:'shy'},
  {scene:'none', mode:'hero', say:'nên hôm nay, đến lượt <em>cậu</em> được quan tâm', bars:2, mood:'happy', fx:{petals:1.1}},
 
- {say:'Dmanh xin gửi Ngănn bốn lời chúc nhé', bars:1.5, mood:'wave', bg:2},
- {scene:'health', mode:'side', say:'chúc cậu thật nhiều <em>sức khỏe</em> — để còn thưởng thức những tinh hoa cuộc đời', bars:2.4, mood:'talk', bg:1, fx:{meteor:.6}},
+ {say:'y:'Dmanh xin gửi Ngănn bốn lời chúc ', bars:1.5, mood:'wave', bg:2},
+ {scene:'health', mode:'side', say:'chúc cậu thật nhiều <em>sức khỏe</em> — để còn đi hết những nơi cậu muốn đến', bars:2.4, mood:'talk', bg:1, fx:{meteor:.6}},
  {scene:'peace', say:'chúc cậu <em>bình yên</em> — nơi có nụ cười, hoa, và cả những lời yêu thương ngọt ngào nhất!', bars:2.2, mood:'talk', bg:1},
- {scene:'free', say:'chúc cậu đủ <em>tự do</em> để làm điều mình thích, và đủ dũng cảm để theo đuổi nó', bars:2.5, mood:'talk', bg:0, fx:{lantern:1,meteor:.8}},
+ {scene:'free', say:'chúc cậu thật nhiều <em>sức khỏe</em> — để còn thưởng thức những tinh hoa cuộc đời', bars:2.5, mood:'talk', bg:0, fx:{lantern:1,meteor:.8}},
  {scene:'love', say:'chúc cậu luôn được <em>yêu thương</em> - bằng sự chân thành — đúng cách, đúng người, và cả bởi chính cậu', bars:2.5, mood:'happy', bg:2, fx:{hearts:1,petals:.3}},
 
  {scene:'none', mode:'hero', say:'cậu không cần phải hoàn hảo đâu', bars:1.6, mood:'talk', fx:{petals:.8}},
@@ -47,12 +46,12 @@ const S=[
  {scene:'gift', mode:'side', say:'tớ tặng cậu bó hoa này nè', bars:1.8, mood:'happy', bg:3, fx:{petals:1,meadow:1.1}},
  {say:'một loài hoa không bao giờ héo — vì mỗi cánh là một lời yêu thương', bars:2.4, mood:'talk'},
 
- {scene:'question', mode:'hero', say:'cho Dmanh hỏi một câu nhé…<br>hôm nay Ngăn đã <em>khen bản thân</em> chưa ạaa?', bars:2, mood:'wink', bg:2, fx:{petals:.3,meteor:1}, wait:true, reveal:['q1']},
+ {scene:'question', mode:'hero', say:'cho Dmanh hỏi một câu nhé…<br>hôm nay Ngăn đã <em>khen bản thân</em> chưa ạaa??', bars:2, mood:'wink', bg:2, fx:{petals:.3,meteor:1}, wait:true, reveal:['q1']},
  {scene:'final', mode:'side', say:'', mood:'happy', bg:3, fx:{fire:1,petals:.9,meadow:1.5}, wait:true, final:true}
 ];
 
 /* ================= TRẠNG THÁI ================= */
-const nu=$('#nu'), bgls=$$('.bgl'), line=$('#line'), bubble=$('#bubble'), hint=$('#hint'), prog=$('#prog');
+const nu=('#nu'),bgls=('.bgl'),line=('#line'), bubble=('#bubble'),hint=('#hint'), prog=$('#prog');
 let idx=-1, timer=null, started=false, curScene=null, waiting=false, lock=0, talkT=null;
 let fxS={petals:0,hearts:0,lantern:0,fire:0,meteor:1,meadow:.6};
 
@@ -130,7 +129,7 @@ $('#q1').addEventListener('click',e=>{
   if(b.dataset.a==='yes'){
     say('giỏi taaaaa! khen thật nhiều vào nhé — cậu xứng đáng mà, mà quên thì cũng có tui khen mờ');
   } else {
-    say('Thế mạn phép chúc nhé: cậu <em>mạnh mẽ</em> hơn cậu nghĩ, <em>dịu dàng</em> hơn cậu tưởng, và quan trọng hơn cậu vẫn nghĩ rất nhiều. Dù thế giới có ồn ào, mong Thị Ngân luôn giữ niềm tin rằng: "MÌNH XỨNG ĐÁNG VỚI NHỮNG ĐIỀU TỐT ĐẸP NHẤT!"');
+    say('Thế mạn phép chúc nhé: cậu <em>mạnh mẽ</em> hơn cậu nghĩ, <em>dịu dàng</em> hơn cậu tưởng, và quan trọng hơn cậu vẫn nghĩ rất nhiều. Dù thế giới có ồn ào, mong Thị Ngân luôn giữ niềm tin rằng: MÌNH XỨNG ĐÁNG VỚI NHỮNG ĐIỀU TỐT ĐẸP NHẤT!');
   }
   clearTimeout(timer); timer=setTimeout(()=>go(idx+1), snap(4.4*BAR));
 });
@@ -138,12 +137,13 @@ $('#q1').addEventListener('click',e=>{
 function setupFinal(){
   const to=TO||'';
   $('#f-to').textContent = to ? 'gửi '+to+(FROM?' · từ '+FROM:'') : 'gửi người con gái tuyệt vời'+(FROM?' · từ '+FROM:'');
+  if(location.protocol.startsWith('http')) $('#b-link').hidden=false;
 }
-// $('#b-link').addEventListener('click',()=>{
-//   const v=TO;
-//   const u=new URL(location.href); u.search=''; if(v) u.searchParams.set('to',v);
-//   (navigator.clipboard?navigator.clipboard.writeText(u.toString()):Promise.reject()).then(()=>{$('#b-link').textContent='đã chép ✓';setTimeout(()=>$('#b-link').textContent='chép link',1800);}).catch(()=>prompt('Sao chép liên kết:',u.toString()));
-// });
+$('#b-link').addEventListener('click',()=>{
+  const v=TO;
+  const u=new URL(location.href); u.search=''; if(v) u.searchParams.set('to',v);
+  (navigator.clipboard?navigator.clipboard.writeText(u.toString()):Promise.reject()).then(()=>{('#b-link').textContent='đãchép✓';setTimeout(()=>('#b-link').textContent='chép link',1800);}).catch(()=>prompt('Sao chép liên kết:',u.toString()));
+});
 $('#b-replay').addEventListener('click',()=>{
   $$('.rv.on,.node.on,.edge.on,.lbl.on').forEach(e=>e.classList.remove('on'));
   if(curScene){curScene.classList.remove('on'); curScene=null;}
@@ -260,3 +260,5 @@ requestAnimationFrame(frame);
 if(qp.has('debug')) window.__go=go;
 document.addEventListener('visibilitychange',()=>{ if(started&&!document.hidden&&bgm.paused&&!bgm.muted) bgm.play().catch(()=>{}); });
 })();
+
+

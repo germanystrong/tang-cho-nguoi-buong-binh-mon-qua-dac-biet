@@ -137,14 +137,13 @@ $('#q1').addEventListener('click',e=>{
 
 function setupFinal(){
   const to=TO||'';
-  $('#f-to').textContent = to ? 'gửi '+to+(FROM?' · từ '+FROM:'') : 'gửi người phụ nữ tuyệt vời'+(FROM?' · từ '+FROM:'');
-  if(location.protocol.startsWith('http')) $('#b-link').hidden=false;
+  $('#f-to').textContent = to ? 'gửi '+to+(FROM?' · từ '+FROM:'') : 'gửi người con gái tuyệt vời'+(FROM?' · từ '+FROM:'');
 }
-$('#b-link').addEventListener('click',()=>{
-  const v=TO;
-  const u=new URL(location.href); u.search=''; if(v) u.searchParams.set('to',v);
-  (navigator.clipboard?navigator.clipboard.writeText(u.toString()):Promise.reject()).then(()=>{$('#b-link').textContent='đã chép ✓';setTimeout(()=>$('#b-link').textContent='chép link',1800);}).catch(()=>prompt('Sao chép liên kết:',u.toString()));
-});
+// $('#b-link').addEventListener('click',()=>{
+//   const v=TO;
+//   const u=new URL(location.href); u.search=''; if(v) u.searchParams.set('to',v);
+//   (navigator.clipboard?navigator.clipboard.writeText(u.toString()):Promise.reject()).then(()=>{$('#b-link').textContent='đã chép ✓';setTimeout(()=>$('#b-link').textContent='chép link',1800);}).catch(()=>prompt('Sao chép liên kết:',u.toString()));
+// });
 $('#b-replay').addEventListener('click',()=>{
   $$('.rv.on,.node.on,.edge.on,.lbl.on').forEach(e=>e.classList.remove('on'));
   if(curScene){curScene.classList.remove('on'); curScene=null;}
